@@ -59,3 +59,5 @@ $('file').addEventListener('change',async()=>{
   }
  }catch(e){$('status').textContent='Import failed: '+e.message;}
 });
+
+document.getElementById('openOptions').addEventListener('click',()=>chrome.runtime.openOptionsPage());

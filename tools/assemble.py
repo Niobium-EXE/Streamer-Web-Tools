@@ -64,11 +64,11 @@ def rules_background(s):
     return s
 
 def pop_filter(s):
-    return replace_once(s,"files: ['core.js', 'content.js']","files: ['filter/core.js', 'filter/content.js']","filter/popup.js") if False else s.replace("files: ['core.js', 'content.js']","files: ['filter/core.js', 'filter/content.js']").replace("chrome.runtime.openOptionsPage()","chrome.tabs.create({url:chrome.runtime.getURL('filter/options.html')})")
+    return replace_once(s,"files: ['core.js', 'content.js']","files: ['filter/core.js', 'filter/content.js']","filter/popup.js") if False else s.replace("files: ['core.js', 'content.js']","files: ['filter/core.js', 'filter/content.js']").replace("chrome.runtime.openOptionsPage()","chrome.runtime.openOptionsPage()")
 def pop_rules(s):
-    return s.replace("chrome.runtime.openOptionsPage()","chrome.tabs.create({url:chrome.runtime.getURL('rules/options.html')})")
+    return s.replace("chrome.runtime.openOptionsPage()","chrome.runtime.openOptionsPage()")
 def filter_sidebar(s):
-    return s.replace("chrome.runtime.getURL('options.html?source=opera-sidebar')","chrome.runtime.getURL('filter/options.html?source=opera-sidebar')")
+    return s.replace("chrome.runtime.getURL('options.html?source=opera-sidebar')","chrome.runtime.getURL('options.html?source=opera-sidebar')")
 
 def main():
     for folder, repo in SOURCES.items():
@@ -79,6 +79,8 @@ def main():
     patch("filter","background.js",filter_background)
     patch("filter","popup.js",pop_filter)
     patch("filter","sidebar.js",filter_sidebar)
+    patch("filter","options.js",lambda s:s.replace("await mutate({ kind: 'replaceSettings', settings: imported });","await SWTBackup.mergeFilter(imported); await getSettings();"))
+    patch("filter","options.html",lambda s:s.replace('<script src="options.js"></script>','<script src="../rules/shared.js"></script><script src="../shared/backup.js"></script><script src="options.js"></script>'))
     patch("rules","background.js",rules_background)
     patch("rules","popup.js",pop_rules)
     patch("mhtml","background.js",mhtml_background)

@@ -1,0 +1,36 @@
+name: Build unpacked extension
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Assemble original extension features
+        run: python tools/assemble.py
+      - name: Verify extension files
+        run: |
+          python -m json.tool manifest.json > /dev/null
+          test -f filter/core.js
+          test -f rules/shared.js
+          test -f mhtml/offscreen.html
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Streamer-Web-Tools-unpacked
+          path: |
+            manifest.json
+            background.js
+            popup.html
+            popup.css
+            popup.js
+            sidebar.html
+            filter/
+            rules/
+            mhtml/

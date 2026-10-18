@@ -1,0 +1,16 @@
+/* Align the original filter editor with Streamer Web Tools settings. */
+:root{color-scheme:dark;--swt-bg:#0f1115;--swt-panel:#171a20;--swt-text:#f4f6f8;--swt-border:#303640}
+html,body{background:var(--swt-bg)!important;color:var(--swt-text)!important}
+.page{max-width:none!important;padding:4px 0 24px!important}
+.hero{border:1px solid var(--swt-border);border-radius:12px;padding:18px;background:var(--swt-panel);margin-bottom:14px!important}
+.hero h1{font-size:23px!important}.eyebrow{display:none}
+.panel{background:var(--swt-panel)!important;color:var(--swt-text)!important;border:1px solid var(--swt-border)!important;border-radius:12px!important;box-shadow:none!important;margin-bottom:14px!important}
+input,textarea,select{background:#101319!important;color:var(--swt-text)!important;border-color:var(--swt-border)!important}
+input[type=checkbox]{accent-color:#2f7df6}
+button{background:#1e222a!important;border-color:var(--swt-border)!important;color:var(--swt-text)!important}
+button.primary{background:#2f7df6!important;color:white!important}
+.subtle{color:#aeb6c2;opacity:1}
+.table-wrap{border-color:var(--swt-border)!important}
+th,td{border-color:var(--swt-border)!important}
+@media(max-width:1000px){.add-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media(max-width:650px){.add-grid{grid-template-columns:1fr!important}.hero{flex-direction:column;align-items:stretch}.page{padding:0!important}}

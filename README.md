@@ -43,3 +43,7 @@ When a GitHub release tag such as `v1.1.0` matches `manifest.json`'s version, th
 Site rules and live filtering need access to matched websites. MHTML uses `pageCapture`, `downloads`, `offscreen` and a context menu. JavaScript rules need the browser's User Scripts permission; depending on your Chromium version, **Allow User Scripts** must be enabled manually.
 
 The original repositories remain independent. The build process fetches and adapts copies into `filter/`, `rules/`, and `mhtml/`. Original extension sources are not committed to this repository. For repeatable releases, pin upstream commits in the assembly script before publishing.
+
+## Full settings page
+
+Use Open full settings in the popup. The options page is based on the original Site Rule Runner layout, with CSS Rules, JavaScript Rules, Web Filter, and Import & Export tabs. Each tool retains its own editable configuration, with merge-on-import for both tools.

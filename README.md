@@ -25,7 +25,7 @@ The popup has separate JSON import/export buttons for **Filter** and **Site Rule
 
 ## Developer installation
 
-Use the `manifest.json` in the repository root. In Chrome / Opera, open Extensions, enable Developer mode, choose **Load unpacked**, and select the folder with this manifest. For a downloadable ZIP, use the `Build unpacked ZIP` GitHub Actions workflow artifact.
+This source repository uses an **assembly step** to fetch the upstream extension modules. Open **Actions → Build unpacked extension → Run workflow**, download the `Streamer-Web-Tools-unpacked` artifact, extract it, and select its folder from Chrome / Opera **Extensions → Developer mode → Load unpacked**. Alternatively, run `python tools/assemble.py` locally, then load this repository folder. The repository root alone is not installable until the assembly step has run.
 
 ## Packed .crx releases and auto updates
 
@@ -42,4 +42,4 @@ When a GitHub release tag such as `v1.1.0` matches `manifest.json`'s version, th
 
 Site rules and live filtering need access to matched websites. MHTML uses `pageCapture`, `downloads`, `offscreen` and a context menu. JavaScript rules need the browser's User Scripts permission; depending on your Chromium version, **Allow User Scripts** must be enabled manually.
 
-The original repositories remain independent. This project contains adapted copies, namespaced in `filter/`, `rules/`, and `mhtml/`, to retain their original functionality while avoiding popup and background-worker collisions.
+The original repositories remain independent. The build process fetches and adapts copies into `filter/`, `rules/`, and `mhtml/`. Original extension sources are not committed to this repository. For repeatable releases, pin upstream commits in the assembly script before publishing.

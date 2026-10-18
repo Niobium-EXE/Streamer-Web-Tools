@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Streamer Web Tools",
   "short_name": "Streamer Tools",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Live filtering, site rules, and right-click MHTML archiving in one Chromium extension.",
   "minimum_chrome_version": "120",
   "permissions": [
@@ -29,7 +29,7 @@
       "128": "rules/icons/inactive-128.png"
     }
   },
-  "options_page": "popup.html",
+  "options_page": "options.html",
   "background": {
     "service_worker": "background.js"
   },
@@ -66,6 +66,6 @@
   "sidebar_action": {
     "default_icon": "filter/icons/icon32.png",
     "default_title": "Streamer Web Tools Settings",
-    "default_panel": "sidebar.html"
+    "default_panel": "options.html"
   }
 }

@@ -80,7 +80,7 @@ def main():
     patch("filter","popup.js",pop_filter)
     patch("filter","sidebar.js",filter_sidebar)
     patch("filter","options.js",lambda s:s.replace("await mutate({ kind: 'replaceSettings', settings: imported });","await SWTBackup.mergeFilter(imported); await getSettings();"))
-    patch("filter","options.html",lambda s:s.replace('<script src="options.js"></script>','<script src="../rules/shared.js"></script><script src="../shared/backup.js"></script><script src="options.js"></script>'))
+    patch("filter","options.html",lambda s:s.replace('<link rel="stylesheet" href="options.css">','<link rel="stylesheet" href="options.css"><link rel="stylesheet" href="../filter-embedded.css">').replace('<script src="options.js"></script>','<script src="../rules/shared.js"></script><script src="../shared/backup.js"></script><script src="options.js"></script>'))
     patch("rules","background.js",rules_background)
     patch("rules","popup.js",pop_rules)
     patch("mhtml","background.js",mhtml_background)

@@ -31,6 +31,12 @@ jobs:
             popup.css
             popup.js
             sidebar.html
+            options.html
+            options.js
+            options-shell.js
+            options.css
+            filter-embedded.css
+            shared/
             filter/
             rules/
             mhtml/

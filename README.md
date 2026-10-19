@@ -47,3 +47,9 @@ The original repositories remain independent. The build process fetches and adap
 ## Full settings page
 
 Use Open full settings in the popup. The options page is based on the original Site Rule Runner layout, with CSS Rules, JavaScript Rules, Web Filter, and Import & Export tabs. Each tool retains its own editable configuration, with merge-on-import for both tools.
+
+## Chrome Web Store
+
+A dedicated **Build Chrome Web Store ZIP** GitHub Actions workflow assembles the three upstream modules and creates a sanitized store upload ZIP (independent of the CRX signing secret). The optional release-time **chrome-web-store** job can upload new versions of an existing listing through the Google Chrome Web Store API v2 once configured.
+
+For initial submission and automated update setup, read [CHROME-WEB-STORE.md](CHROME-WEB-STORE.md). The extension-specific [privacy policy](PRIVACY.md) provides a public URL for the Store listing. A store listing, screenshots, Google developer account, service account and actual Google review must be completed by the developer.

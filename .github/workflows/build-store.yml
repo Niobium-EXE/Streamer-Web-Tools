@@ -19,6 +19,23 @@ jobs:
         run: |
           VERSION=$(python -c "import json; print(json.load(open('manifest.json'))['version'])")
           python tools/build_store_package.py --repo . --out "dist/Streamer-Web-Tools-v${VERSION}-Chrome-Web-Store.zip"
+      - name: Validate packaging
+        run: |
+          python -m py_compile tools/assemble.py tools/build_store_package.py
+          node --check background.js
+          node --check popup.js
+          python - <<'PY'
+          import json, zipfile, glob
+          path = glob.glob("dist/*-Chrome-Web-Store.zip")[0]
+          with zipfile.ZipFile(path) as z:
+              names = set(z.namelist())
+              assert z.testzip() is None
+              manifest = json.loads(z.read("manifest.json"))
+              assert manifest["options_page"] in names
+              assert "key" not in manifest and "update_url" not in manifest
+              assert {"filter/core.js", "rules/shared.js", "mhtml/offscreen.html", "shared/backup.js"} <= names
+          print("Chrome Web Store package checks passed.")
+          PY
       - uses: actions/upload-artifact@v4
         with:
           name: Chrome-Web-Store-ZIP

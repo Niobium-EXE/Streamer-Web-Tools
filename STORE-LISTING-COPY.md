@@ -42,6 +42,12 @@ Streamer Web Tools gives you a convenient set of browser controls for customizin
 
 **Compatibility:** Chromium-based browsers with the necessary APIs. Some JavaScript rule features require User Scripts permission and compatible browser settings.
 
+## Non-commercial use notice — add to the public Store description
+
+**NON-COMMERCIAL USE ONLY.** Streamer Web Tools is free for personal, non-commercial use. Selling, reselling, bundling for a fee, or using the extension for monetized livestreams, sponsored content, advertising-supported productions, paid services, or other revenue-generating activity requires prior written permission from Niobium-EXE. See the Terms of Use: https://github.com/Niobium-EXE/Streamer-Web-Tools/blob/main/LICENSE
+
+Add a brief version of this notice near the bottom of the Chrome Web Store description, above the privacy disclosure, so users see the restriction before installing. Also leave the full Terms of Use inside the extension (already linked from its settings and popup).
+
 ## Privacy practices — single-purpose description
 
 Provide user-controlled webpage customization and local webpage preservation in one browser interface, including text replacement, site-specific CSS/JavaScript rules, and user-initiated MHTML saving.

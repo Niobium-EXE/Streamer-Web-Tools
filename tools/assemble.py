@@ -86,5 +86,18 @@ def main():
     patch("mhtml","background.js",mhtml_background)
     # Optionally allow disabling all site rules without destructively modifying individual rule toggles.
     # The normal CSS and JS editors remain unchanged.
+    # Optional publisher-provided icon set. These files are not fetched from
+    # upstream, so the Store and toolbar branding can be kept consistent.
+    sizes=(16,32,48,128)
+    if all((ROOT/"branding"/f"icon{size}.png").is_file() for size in sizes):
+        manifest_path=ROOT/"manifest.json"
+        manifest=json.loads(manifest_path.read_text("utf-8"))
+        icons={str(size):f"branding/icon{size}.png" for size in sizes}
+        manifest["icons"]=icons
+        manifest["action"]["default_icon"]=icons
+        if "sidebar_action" in manifest:
+            manifest["sidebar_action"]["default_icon"]=icons["32"]
+        manifest_path.write_text(json.dumps(manifest,indent=2)+"\\n",encoding="utf-8")
+        print("Publisher branding icons enabled.")
     print("Combined extension assembled at",ROOT)
 if __name__=="__main__":main()

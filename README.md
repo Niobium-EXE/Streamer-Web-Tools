@@ -1,5 +1,9 @@
 # Streamer Web Tools
 
+[![License: Non-Commercial](https://img.shields.io/badge/License-Non--Commercial-red)](LICENSE)
+
+**Commercial use is prohibited without written permission from Niobium-EXE.**
+
 > **License: non-commercial use only.** Streamer Web Tools may not be used to earn money, including monetized streaming, sponsored content, paid work, or resale, without prior written permission from Niobium-EXE. See the [LICENSE](LICENSE) and the [in-extension Terms of Use](terms.html). The project's public GitHub source and free Chrome Web Store download do not grant commercial-use rights.
 
 A Chromium / Opera GX extension combining:

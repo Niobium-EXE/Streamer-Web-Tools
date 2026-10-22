@@ -1,5 +1,7 @@
 # Streamer Web Tools
 
+> **License: non-commercial use only.** Streamer Web Tools may not be used to earn money, including monetized streaming, sponsored content, paid work, or resale, without prior written permission from Niobium-EXE. See the [LICENSE](LICENSE) and the [in-extension Terms of Use](terms.html). The project's public GitHub source and free Chrome Web Store download do not grant commercial-use rights.
+
 A Chromium / Opera GX extension combining:
 
 - **Live Web Filter** (from [Live Profanity Filter](https://github.com/Niobium-EXE/Live-Profanity-Filter-Chromium-Extension))

@@ -31,12 +31,12 @@ This source repository uses an **assembly step** to fetch the upstream extension
 
 ## Packed .crx releases and auto updates
 
-When a GitHub release tag such as `v1.2.0` matches `manifest.json`'s version, the `Publish CRX` workflow can publish the signed CRX and a GitHub Pages `update.xml`.
+When a GitHub release tag such as `v1.2.1` matches `manifest.json`'s version, the `Publish CRX` workflow can publish the signed CRX and a GitHub Pages `update.xml`.
 
 1. Generate a **permanent, dedicated** CRX signing key (never commit it or reuse another extension's signing key).
 2. Set GitHub Actions repository secret `CRX_PRIVATE_KEY_B64` to the **base64-encoded PEM private key**. A new key produces a different extension ID and separate storage.
 3. Enable GitHub Pages with **GitHub Actions** as the publishing source and allow the `github-pages` environment.
-4. Publish a release with tag `v1.2.0`. The workflow signs `Streamer-Web-Tools-v1.2.0.crx`, uploads an unpacked ZIP and publishes the update manifest.
+4. Publish a release with tag `v1.2.1`. The workflow signs `Streamer-Web-Tools-v1.2.1.crx`, uploads an unpacked ZIP and publishes the update manifest.
 
 **Important:** Chrome/Opera can restrict installation and automatic updating of extensions outside their official stores. Signed self-hosted CRX automatic updates work only where browser policy/installation methods permit them. A .crx release is not a way to bypass browser extension security restrictions.
 

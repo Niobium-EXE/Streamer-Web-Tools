@@ -15,6 +15,7 @@ ROOT_FILES = (
     "sidebar.html", "filter-embedded.css"
 )
 RUNTIME_DIRS = ("filter", "rules", "mhtml", "shared")
+OPTIONAL_DIRS = ("branding",)
 ALLOWED = {".html", ".js", ".css", ".json", ".png", ".jpg", ".jpeg",
            ".webp", ".svg", ".woff", ".woff2", ".gif", ".wasm"}
 
@@ -24,7 +25,7 @@ def included_files(repo: Path):
         if not path.is_file():
             raise FileNotFoundError(f"Required extension file missing: {name}")
         yield name, path
-    for dirname in RUNTIME_DIRS:
+    for dirname in RUNTIME_DIRS + tuple(d for d in OPTIONAL_DIRS if (repo / d).is_dir()):
         folder = repo / dirname
         if not folder.is_dir():
             raise FileNotFoundError(

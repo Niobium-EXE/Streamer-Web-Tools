@@ -97,7 +97,7 @@ def main():
         manifest["action"]["default_icon"]=icons
         if "sidebar_action" in manifest:
             manifest["sidebar_action"]["default_icon"]=icons["32"]
-        manifest_path.write_text(json.dumps(manifest,indent=2)+"\\n",encoding="utf-8")
+        manifest_path.write_text(json.dumps(manifest,indent=2)+"\n",encoding="utf-8")
         print("Publisher branding icons enabled.")
     print("Combined extension assembled at",ROOT)
 if __name__=="__main__":main()

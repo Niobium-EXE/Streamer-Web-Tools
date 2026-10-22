@@ -1,6 +1,6 @@
 # Chrome Web Store — Listing copy and dashboard answers
 
-Prepared: October 22, 2026. Intended for Streamer Web Tools v1.2.0. **Review these answers against the actual uploaded ZIP and any later code changes before certifying them.** The Chrome Web Store reviewer may require further disclosure or code changes.
+Prepared: October 22, 2026. Intended for Streamer Web Tools v1.2.1. **Review these answers against the actual uploaded ZIP and any later code changes before certifying them.** The Chrome Web Store reviewer may require further disclosure or code changes.
 
 ## Store listing — Product details
 

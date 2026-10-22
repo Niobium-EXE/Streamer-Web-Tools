@@ -4,7 +4,7 @@
 
 1. Open **Actions → Build Chrome Web Store ZIP → Run workflow**.
 2. Open the completed workflow run, download the **Chrome-Web-Store-ZIP** artifact, and extract it.
-3. Upload the enclosed `Streamer-Web-Tools-v1.2.0-Chrome-Web-Store.zip` to [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole). Do not upload the GitHub `.crx` or the source archive.
+3. Upload the enclosed `Streamer-Web-Tools-v1.2.1-Chrome-Web-Store.zip` to [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole). Do not upload the GitHub `.crx` or the source archive.
 4. Fill in the store listing, privacy declarations, permission justifications, and screenshots. Include a public privacy policy URL, such as `https://github.com/Niobium-EXE/Streamer-Web-Tools/blob/main/PRIVACY.md`.
 5. Submit for Google's review. Approval and timing are determined by Google.
 
@@ -53,3 +53,7 @@ Official Google documentation:
 - https://developer.chrome.com/docs/webstore/using-api
 - https://developer.chrome.com/docs/webstore/service-accounts
 - https://developer.chrome.com/docs/webstore/publish
+
+## Non-commercial-use restrictions
+
+The extension is distributed under the [non-commercial LICENSE](LICENSE). The full terms are also packaged as `terms.html` and linked from the popup and settings page. Add the short usage restriction from [STORE-LISTING-COPY.md](STORE-LISTING-COPY.md) to the public Chrome Web Store listing description before publication. This is a licensing notice, not a technical restriction, and it does not guarantee legal enforceability.

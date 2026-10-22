@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Streamer Web Tools",
   "short_name": "Streamer Tools",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Live filtering, site rules, and right-click MHTML archiving in one Chromium extension.",
   "minimum_chrome_version": "120",
   "permissions": [

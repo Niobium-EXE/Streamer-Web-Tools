@@ -12,7 +12,7 @@ import zipfile
 ROOT_FILES = (
     "background.js", "popup.html", "popup.css", "popup.js",
     "options.html", "options.css", "options.js", "options-shell.js",
-    "sidebar.html", "filter-embedded.css"
+    "sidebar.html", "filter-embedded.css", "terms.html", "terms.css"
 )
 RUNTIME_DIRS = ("filter", "rules", "mhtml", "shared")
 OPTIONAL_DIRS = ("branding",)

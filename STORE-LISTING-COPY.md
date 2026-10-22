@@ -128,3 +128,7 @@ Enter an email address you control and monitor. Do not publish a fabricated addr
 - Test the exact store ZIP, confirm all intended features work, and check permissions and single-purpose policy compliance before submitting.
 
 The Chrome Web Store team determines whether the bundle complies with review policies.
+
+## Applying the new artwork to the packaged extension
+
+Download the 128px store PNG and companion icon pack from the ChatGPT conversation. Place `icon16.png`, `icon32.png`, `icon48.png`, and `icon128.png` inside a `branding/` folder in your GitHub repository. Commit the files, rerun the store ZIP workflow, and use that ZIP for the Chrome Web Store submission. The manifest will automatically reference these icons when all four sizes are present. Otherwise the original Site Rule Runner icon is used.

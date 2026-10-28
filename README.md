@@ -14,6 +14,10 @@ A Chromium / Opera GX extension combining:
 
 The toolbar button **always opens the combined popup**. Right-click the webpage and choose **Save page as MHTML**; you can also right-click the extension's icon and choose the same command. There is also a Save as MHTML button within the popup.
 
+## Unicode lookalike filtering (v1.2.2)
+
+Existing and newly added **Web Filter** words automatically match common lookalike characters, including Latin accented variants such as `ķ`, decomposed accents, fullwidth/styled Latin letters, and common Cyrillic/Greek lookalikes. For example, a saved rule for `cock` also matches `cocķ` and `coсķ` (the latter uses Cyrillic `с`). There is no setting to migrate and no stored filters are overwritten or reset. Existing per-rule options (exact, partial, whole, repeated letters, separators, and case sensitivity) continue to work. Advanced regex rules are kept unchanged to preserve their regex semantics.
+
 ## Import and export
 
 The popup has separate JSON import/export buttons for **Filter** and **Site Rules**. Import is a **merge**, not a full replacement:

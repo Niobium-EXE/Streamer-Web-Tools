@@ -64,7 +64,7 @@ def rules_background(s):
     return s
 
 def pop_filter(s):
-    return replace_once(s,"files: ['core.js', 'content.js']","files: ['filter/core.js', 'filter/content.js']","filter/popup.js") if False else s.replace("files: ['core.js', 'content.js']","files: ['filter/core.js', 'filter/content.js']").replace("chrome.runtime.openOptionsPage()","chrome.runtime.openOptionsPage()")
+    return replace_once(s,"files: ['core.js', 'content.js']","files: ['filter/core.js', 'unicode_filter.js', 'filter/content.js']","filter/popup.js") if False else s.replace("files: ['core.js', 'content.js']","files: ['filter/core.js', 'filter/content.js']").replace("chrome.runtime.openOptionsPage()","chrome.runtime.openOptionsPage()")
 def pop_rules(s):
     return s.replace("chrome.runtime.openOptionsPage()","chrome.runtime.openOptionsPage()")
 def filter_sidebar(s):
@@ -80,7 +80,9 @@ def main():
     patch("filter","popup.js",pop_filter)
     patch("filter","sidebar.js",filter_sidebar)
     patch("filter","options.js",lambda s:s.replace("await mutate({ kind: 'replaceSettings', settings: imported });","await SWTBackup.mergeFilter(imported); await getSettings();"))
+    patch("filter","popup.html",lambda s:replace_once(s,'<script src="core.js"></script>','<script src="core.js"></script><script src="../unicode_filter.js"></script>',"filter/popup.html"))
     patch("filter","options.html",lambda s:s.replace('<link rel="stylesheet" href="options.css">','<link rel="stylesheet" href="options.css"><link rel="stylesheet" href="../filter-embedded.css">').replace('<script src="options.js"></script>','<script src="../rules/shared.js"></script><script src="../shared/backup.js"></script><script src="options.js"></script>'))
+    patch("filter","options.html",lambda s:replace_once(s,'<script src="core.js"></script>','<script src="core.js"></script><script src="../unicode_filter.js"></script>',"filter/options.html"))
     patch("rules","background.js",rules_background)
     patch("rules","popup.js",pop_rules)
     patch("mhtml","background.js",mhtml_background)

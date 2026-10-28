@@ -19,6 +19,9 @@ jobs:
         run: |
           python -m json.tool manifest.json > /dev/null
           test -f filter/core.js
+          test -f unicode_filter.js
+          node --check unicode_filter.js
+          node tools/test_unicode_filter.js
           test -f rules/shared.js
           test -f mhtml/offscreen.html
       - uses: actions/upload-artifact@v4
@@ -36,6 +39,7 @@ jobs:
             options-shell.js
             options.css
             filter-embedded.css
+            unicode_filter.js
             shared/
             filter/
             rules/

@@ -178,7 +178,7 @@ async function reconnectActivePage() {
   if (!currentTab?.id || !/^https?:/i.test(currentTab.url||'')) return;
   try {
     const pong=await chrome.tabs.sendMessage(currentTab.id,{type:'lpf:ping'});
-    if(pong?.ok)return;
+    if(pong?.ok && pong.swtModeVersion===1)return;
   } catch (_) {}
   try {
     await chrome.scripting.executeScript({

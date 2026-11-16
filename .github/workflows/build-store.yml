@@ -26,6 +26,7 @@ jobs:
           node --check popup.js
           node --check unicode_filter.js
           node tools/test_unicode_filter.js
+          node tools/test_filter_mode.js
           python - <<'PY'
           import json, zipfile, glob
           path = glob.glob("dist/*-Chrome-Web-Store.zip")[0]
@@ -35,7 +36,7 @@ jobs:
               manifest = json.loads(z.read("manifest.json"))
               assert manifest["options_page"] in names
               assert "key" not in manifest and "update_url" not in manifest
-              assert {"filter/core.js", "rules/shared.js", "mhtml/offscreen.html", "shared/backup.js", "unicode_filter.js"} <= names
+              assert {"filter/core.js", "rules/shared.js", "mhtml/offscreen.html", "shared/backup.js", "unicode_filter.js", "filter_mode.js", "filter_mode_ui.js"} <= names
           print("Chrome Web Store package checks passed.")
           PY
       - uses: actions/upload-artifact@v4

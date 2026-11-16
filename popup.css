@@ -74,3 +74,5 @@ input[type="checkbox"]{accent-color:var(--accent)}
 .footer-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .footer a{display:block;text-align:center;margin-top:8px;font-size:10px;color:#9eb0ce;text-decoration:none}
 .footer a:hover{text-decoration:underline}
+
+.spaced-label{margin:11px 0 6px}

@@ -69,7 +69,7 @@ input[type="checkbox"]{accent-color:var(--accent)}
 .empty{padding:14px 8px;text-align:center;color:var(--muted);font-size:12px;border:1px dashed var(--line2);border-radius:8px}
 .link-row{display:flex;justify-content:space-between;align-items:center;background:none;border:0;color:#a9c9fd;font-weight:650;font-size:12px;padding:9px 5px;width:100%;text-align:left}
 .link-row span{font-size:18px}
-.status{flex:none;margin:0 13px 5px;padding:7px 10px;border-radius:8px;background:#242f42;border:1px solid #405778;color:#e4edff;font-size:11px;max-height:58px;overflow-y:auto}
+.status{flex:none;margin:0 13px 5px;padding:7px 10px;border-radius:8px;background:#242f42;border:1px solid #405778;color:#e4edff;font-size:11px;max-height:none;overflow-wrap:anywhere}
 .footer{flex:none;border-top:1px solid var(--line);background:#161b25;padding:10px 13px 8px}
 .footer-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .footer a{display:block;text-align:center;margin-top:8px;font-size:10px;color:#9eb0ce;text-decoration:none}

@@ -38,6 +38,8 @@ jobs:
             popup.css
             popup.js
             sidebar.html
+            terms.html
+            terms.css
             options.html
             options.js
             options-shell.js

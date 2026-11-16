@@ -62,6 +62,7 @@ function renderFilter() {
   $('newReplacement').disabled = mode === 'whitelist';
   $('newReplacement').title = mode === 'whitelist'
     ? 'Whitelist mode uses the default replacement for words that are not listed.' : '';
+  if (document.activeElement !== $('defaultReplacement')) $('defaultReplacement').value = settings.defaultReplacement;
   $('filterCount').textContent = settings.words.length + ' saved';
   const disabled = hostname && Core.isSiteDisabled(settings, hostname);
   $('siteToggle').disabled = !hostname;
@@ -211,6 +212,10 @@ function attachEvents() {
   $('filterMode').addEventListener('change',()=>run(async()=>{
     await mutate({kind:'patch',patch:{filterMode:$('filterMode').value}});
     status(settings.filterMode==='whitelist'?'Whitelist enabled. Other words will be replaced.':'Blacklist enabled.');
+  }));
+  $('defaultReplacement').addEventListener('change',()=>run(async()=>{
+    await mutate({kind:'patch',patch:{defaultReplacement:$('defaultReplacement').value||'censored'}});
+    status('Default replacement updated.');
   }));
   $('siteToggle').addEventListener('click',()=>run(async()=>{
     if(!hostname)return;

@@ -50,6 +50,9 @@ jobs:
       - name: Validate Unicode filter
         run: node tools/test_unicode_filter.js
 
+      - name: Test filter modes
+        run: node tools/test_filter_mode.js
+
       - name: Build signed CRX and update manifest
         shell: bash
         env:

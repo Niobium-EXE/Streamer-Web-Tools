@@ -39,7 +39,7 @@ def patch(folder,path,func):
 
 def filter_background(s):
     s=replace_once(s,"importScripts('core.js');","importScripts('filter/core.js', 'filter_mode.js');","filter/background.js")
-    s=replace_once(s,"'enabled', 'defaultReplacement', 'surroundBrackets', 'preserveCase', 'allowlist', 'disabledSites'","'enabled', 'defaultReplacement', 'surroundBrackets', 'preserveCase', 'allowlist', 'disabledSites', 'filterMode'","filter/background.js")
+    s=replace_once(s,"'enabled', 'defaultReplacement', 'surroundBrackets', 'preserveCase', 'allowlist', 'disabledSites'","'enabled', 'defaultReplacement', 'surroundBrackets', 'preserveCase', 'allowlist', 'disabledSites', 'siteListMode'","filter/background.js")
     start=s.index("  chrome.contextMenus.removeAll(() => {")
     end=s.index("\n});",start)
     # Keep the onInstalled initialization, but centralize context menus.
@@ -83,7 +83,7 @@ def main():
     patch("filter","sidebar.js",filter_sidebar)
     patch("filter","options.js",lambda s:s.replace("await mutate({ kind: 'replaceSettings', settings: imported });","await SWTBackup.mergeFilter(imported); await getSettings();"))
     # Mark upgraded content contexts so popup recovery injects the latest filtering adapters.
-    patch("filter","content.js",lambda s:replace_once(s,"revision: settings.revision,","revision: settings.revision, swtModeVersion: 1,","filter/content.js"))
+    patch("filter","content.js",lambda s:replace_once(s,"revision: settings.revision,","revision: settings.revision, swtModeVersion: 2,","filter/content.js"))
     patch("filter","popup.html",lambda s:replace_once(s,'<script src="core.js"></script>','<script src="core.js"></script><script src="../unicode_filter.js"></script>',"filter/popup.html"))
     patch("filter","options.html",lambda s:s.replace('<link rel="stylesheet" href="options.css">','<link rel="stylesheet" href="options.css"><link rel="stylesheet" href="../filter-embedded.css">').replace('<script src="options.js"></script>','<script src="../rules/shared.js"></script><script src="../shared/backup.js"></script><script src="options.js"></script>'))
     patch("filter","options.html",lambda s:replace_once(s,'<script src="core.js"></script>','<script src="core.js"></script><script src="../unicode_filter.js"></script><script src="../filter_mode.js"></script>',"filter/options.html"))

@@ -15,13 +15,13 @@ th,td{border-color:var(--swt-border)!important}
 @media(max-width:1000px){.add-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 @media(max-width:650px){.add-grid{grid-template-columns:1fr!important}.hero{flex-direction:column;align-items:stretch}.page{padding:0!important}}
 
-/* Mode selector in the full filter editor */
-.swt-mode-settings{margin-top:-2px;padding:16px 18px!important}
-.swt-mode-row{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.swt-mode-row label{min-width:230px;margin:0!important}
-.swt-mode-row select{margin-top:5px}
-.swt-mode-help{margin-top:9px;border-top:1px solid var(--swt-border);padding-top:8px;font-size:12px;color:#b8c7dc}
+
+/* Website allowlist/blocklist control beside saved domain textarea. */
+.swt-site-settings{display:grid;gap:8px;margin:13px 0 12px}
+.swt-site-settings label{margin:0!important;display:block;font-size:12px;font-weight:700}
+.swt-site-settings select{width:100%;margin:0}
+.swt-site-settings .subtle{margin:0!important;font-size:12px!important;line-height:1.45}
+.swt-mode-help{border-top:1px solid var(--swt-border);padding:8px 0;font-size:12px;color:#b8c7dc}
 .swt-mode-help summary{cursor:pointer;color:#a9c8f5;font-weight:650}
-.swt-mode-help p{font-size:12px;margin:7px 0 0;line-height:1.5}
-#swtModeHint{margin:6px 0 0!important;color:#b0c6e5!important}
-@media(max-width:650px){.swt-mode-row{align-items:stretch;flex-direction:column}.swt-mode-row label{min-width:0}}
+.swt-mode-help p{font-size:12px;margin:8px 0 0;line-height:1.5}
+#swtSiteHint{color:#b0c6e5!important}

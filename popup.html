@@ -12,7 +12,7 @@
       <div class="mark">S</div>
       <div><h1>Streamer Web Tools</h1><p id="siteName">Checking current website…</p></div>
     </div>
-    <span class="version">v1.3.0</span>
+    <span class="version">v1.3.1</span>
   </header>
 
   <nav class="tabs" aria-label="Tools">
@@ -29,12 +29,13 @@
       </div>
 
       <div class="panel">
-        <div class="field-title"><label for="filterMode">Word list mode</label><span class="hint-badge" tabindex="0" title="Blacklist replaces listed words. Whitelist preserves listed words and replaces other words." aria-label="Blacklist replaces listed words. Whitelist preserves listed words and replaces other words.">i</span></div>
-        <select id="filterMode">
-          <option value="blacklist">Blacklist — replace listed words</option>
-          <option value="whitelist">Whitelist — keep listed words</option>
+        <div class="field-title"><label for="siteMode">Website list mode</label><span class="hint-badge" tabindex="0" title="Blacklist filters everywhere except listed sites. Whitelist filters only listed sites." aria-label="Blacklist filters everywhere except listed sites. Whitelist filters only listed sites.">i</span></div>
+        <select id="siteMode">
+          <option value="blacklist">Blacklist — exclude listed websites</option>
+          <option value="whitelist">Whitelist — only filter listed websites</option>
         </select>
-        <p id="modeHint" class="hint">Blacklist replaces words on your list. Whitelist keeps your listed words and replaces everything else. Existing rules are preserved.</p>
+        <p id="modeHint" class="hint">Blacklist: don't filter listed websites. Whitelist: only filter listed websites. Saved word replacements are unchanged.</p>
+        <button class="text-button" type="button" data-settings="filter">Manage website list in full settings</button>
         <label for="defaultReplacement" class="spaced-label">Default replacement</label>
         <input id="defaultReplacement" type="text" placeholder="censored" aria-label="Default replacement text">
         <button class="text-button" id="siteToggle" type="button">Disable on this site</button>
@@ -45,7 +46,7 @@
         <form id="addFilterForm" class="stack">
           <label for="newWord">Word or phrase</label>
           <input id="newWord" type="text" placeholder="Word to match" required autocomplete="off">
-          <label for="newReplacement">Replacement (blacklist mode)</label>
+          <label for="newReplacement">Replacement</label>
           <div class="inline-fields">
             <input id="newReplacement" type="text" placeholder="Default replacement">
             <button type="submit" class="btn primary">Add</button>
@@ -111,7 +112,7 @@
       <div class="heading-row"><div><h2>Import &amp; Export</h2><p class="muted">Each tool has its own configuration backup.</p></div></div>
       <div class="panel">
         <h3>Web Filter</h3>
-        <p class="muted">Back up filtered words, replacements, mode and preferences.</p>
+        <p class="muted">Back up filtered words, replacements, website list mode and preferences.</p>
         <div class="inline-fields actions">
           <button class="btn" type="button" id="exportFilter">Export</button>
           <button class="btn" type="button" id="importFilter">Import</button>
@@ -125,7 +126,7 @@
           <button class="btn" type="button" id="importRules">Import</button>
         </div>
       </div>
-      <p class="hint">Imports merge: matching entries update; unrelated saved entries stay unchanged. Importing a filter backup never changes your current Blacklist/Whitelist mode.</p>
+      <p class="hint">Imports merge: matching entries update; unrelated saved entries stay unchanged. Importing a filter backup never changes your current website list mode.</p>
       <input id="file" type="file" accept="application/json,.json" hidden>
     </section>
   </main>

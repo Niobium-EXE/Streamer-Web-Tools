@@ -68,9 +68,16 @@ For initial submission and automated update setup, read [CHROME-WEB-STORE.md](CH
 
 To install new branding in both the GitHub and Chrome Web Store builds, create a `branding/` folder in this repository and upload `icon16.png`, `icon32.png`, `icon48.png`, and `icon128.png` to it. The assembly script automatically selects this complete set for the manifest, and the Store ZIP packager includes the folder. Do not upload the entire icon-pack ZIP to the root; upload its individual PNG files to `branding/`. The new artwork is only integrated into the binary *after* those files are committed and a new ZIP is built.
 
-## Blacklist and whitelist modes (v1.3.0)
+## Website blacklist and whitelist modes (v1.3.1)
 
-The Web Filter now has a **Word list mode** selector in the compact popup and the full settings page, with a short explanation and expandable help. **Blacklist** (the default for all existing installations) replaces words that match enabled entries in your saved list. **Whitelist** keeps words that match enabled entries unchanged and replaces other words, using the global default replacement. Punctuation and spacing remain unchanged, and the separate allowlist remains protected in both modes. Word-specific replacement values do not apply in Whitelist mode; they remain stored for use when you switch back to Blacklist. Regex entries can still be used as match patterns. Unicode lookalike matching works in both modes. Switching modes preserves existing settings and is applied to already loaded pages without a manual refresh whenever the content script can be repaired.
+The **website list**, formerly Site Exclusions, now has a two-way mode selector in the compact popup and on the full Web Filter settings page, with inline explanations.
+
+- **Blacklist** (default): the filter works on every website **except** the domains in the saved list.
+- **Whitelist**: the filter works **only** on the domains in the saved list. When the list is empty, no websites are filtered.
+
+The same list is used in both modes; subdomains are included. The current site's quick enable/disable button updates membership in that list. Switching modes preserves all saved domains, filtered words, replacements and advanced Unicode lookalike matching.
+
+**Correction from v1.3.0:** The previous, unintended feature that inverted the *word* list has been removed. The filter always replaces matched saved words normally. Existing v1.3.0 word-mode settings are ignored, and the website mode defaults to Blacklist until deliberately changed.
 
 ### Cleaner popup
 

@@ -9,8 +9,8 @@ let hostname = '';
 let importTarget = '';
 
 const MODE_HELP = {
-  blacklist: 'Blacklist: replace words on your list and leave other words unchanged.',
-  whitelist: 'Whitelist: keep words on your list and replace other words with your default replacement. This can affect most of a page. Existing entries stay saved.'
+  blacklist: 'Blacklist: filter every website except the domains on your list.',
+  whitelist: 'Whitelist: filter only the domains on your list. With an empty list, no websites are filtered.'
 };
 
 function status(message) {
@@ -56,12 +56,9 @@ function openSettings(section) {
 
 function renderFilter() {
   $('filterEnabled').checked = settings.enabled;
-  const mode = settings.filterMode === 'whitelist' ? 'whitelist' : 'blacklist';
-  $('filterMode').value = mode;
+  const mode = settings.siteListMode === 'whitelist' ? 'whitelist' : 'blacklist';
+  $('siteMode').value = mode;
   $('modeHint').textContent = MODE_HELP[mode];
-  $('newReplacement').disabled = mode === 'whitelist';
-  $('newReplacement').title = mode === 'whitelist'
-    ? 'Whitelist mode uses the default replacement for words that are not listed.' : '';
   if (document.activeElement !== $('defaultReplacement')) $('defaultReplacement').value = settings.defaultReplacement;
   $('filterCount').textContent = settings.words.length + ' saved';
   const disabled = hostname && Core.isSiteDisabled(settings, hostname);
@@ -209,9 +206,11 @@ function attachEvents() {
     await mutate({kind:'patch',patch:{enabled:$('filterEnabled').checked}});
     status(settings.enabled?'Web Filter enabled.':'Web Filter disabled.');
   }));
-  $('filterMode').addEventListener('change',()=>run(async()=>{
-    await mutate({kind:'patch',patch:{filterMode:$('filterMode').value}});
-    status(settings.filterMode==='whitelist'?'Whitelist enabled. Other words will be replaced.':'Blacklist enabled.');
+  $('siteMode').addEventListener('change',()=>run(async()=>{
+    await mutate({kind:'patch',patch:{siteListMode:$('siteMode').value}});
+    status(settings.siteListMode==='whitelist'
+      ? 'Filtering only websites in your list.'
+      : 'Filtering everywhere except the websites in your list.');
   }));
   $('defaultReplacement').addEventListener('change',()=>run(async()=>{
     await mutate({kind:'patch',patch:{defaultReplacement:$('defaultReplacement').value||'censored'}});
@@ -324,7 +323,7 @@ function attachEvents() {
       if(!active || !active.closest?.('#filterEditPanel'))renderFilter();
       else {
         $('filterEnabled').checked=settings.enabled;
-        $('filterMode').value=settings.filterMode;
+        $('siteMode').value=settings.siteListMode;
       }
     }
     if(changes.cssRules||changes.jsRules)loadRules().catch(()=>{});
